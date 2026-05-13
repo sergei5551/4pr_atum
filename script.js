@@ -354,9 +354,15 @@ class Calculator {
 
     handleKeyboard(e) {
         const key = e.key;
-
+        if (key.startsWith('F') && key.length >= 2) {
+            const fNumber = parseInt(key.substring(1));
+            if (fNumber >= 1 && fNumber <= 12) {
+                e.preventDefault();
+                return;
+            }
+        }
         // Цифры и точка
-        if (/[\d\.]/.test(key)) {
+        else if (/[\d\.]/.test(key)) {
             e.preventDefault();
             this.appendNumber(key);
         }
